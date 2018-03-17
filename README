@@ -24,7 +24,39 @@ TODO:-
 3. Remove all libfs.c code and implement yourself.
 
 To Cross compile for ARM:-
-
 export KDIR=<kernel build/kobj path>
 export CC=<cross compiler>
 make
+
+To Test:-
+adb root
+adb push learnfs.ko /data
+adb push learnfs-test.sh /data
+adb shell
+sh ./data/learnfs-test.sh
+
+learnfs-test.sh Output:-
+:/data # sh learnfs-test.sh
+unmount learnfs
+rmmod learnfs
+
+mkdir /data/mnt
+mkdir: '/data/mnt': File exists
+insmod learnfs
+mounting learnfs
+
+[Write Test]: Executing write in bs=1m at /data/mnt/fsimage
+10+0 records in
+10+0 records out
+10485760 bytes transferred in 0.036 secs (291271111 bytes/sec)
+Done.
+
+[Read Test]: Executing read in bs=4k at /data/mnt/fsimage
+10+0 records in
+10+0 records out
+40960 bytes transferred in 0.001 secs (40960000 bytes/sec)
+Done.
+
+
+Contribution:-
+1. In case if anyone would like to contribute to this project - please feel free to submit a pull request.
