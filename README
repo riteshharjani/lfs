@@ -1,1 +1,24 @@
-learnfs: Learn filesystem module
+learnfs:	Learn filesystem module
+Author:		Ritesh Harjani <ritesh.harjani@gmail.com>
+==========================================
+
+Description:	learnfs is a small & simple Ram based filesystem
+module which mainly uses the existing library API's of fs/libfs.c
+
+Main goal of writing learnfs is to understand
+"How to write a linux filesystem"
+
+Since it is not disk based fs, so there will be no disk I/O
+involved in this case and the address_space mapping APIs will be
+straight forward.
+
+learnfs:- Since it is written from scratch, every commit of this
+will describe the actual process of writing a filesystem.
+
+While writing sdcardfs & ramfs code was considered as reference.
+
+
+TODO:-
+1. Implement address_space mapping operation on it's own instead of using libfs.
+2. Implement symlink/hardlinks.
+3. Remove all libfs.c code and implement yourself.
