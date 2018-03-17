@@ -22,3 +22,9 @@ TODO:-
 1. Implement address_space mapping operation on it's own instead of using libfs.
 2. Implement symlink/hardlinks.
 3. Remove all libfs.c code and implement yourself.
+
+To Cross compile for ARM:-
+
+export KDIR=<kernel build/kobj path>
+export CC=<cross compiler>
+make
