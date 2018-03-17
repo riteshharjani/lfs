@@ -1,14 +1,23 @@
 #include <linux/module.h>
+#include <linux/fs.h>
+
+static struct file_system_type learnfs_type = {
+	.owner = THIS_MODULE,
+	.name = "learnfs",
+	.fs_flags = 0,
+};
 
 static int __init learnfs_init(void)
 {
-	pr_info("%s: Initialization\n", __func__);
+	register_filesystem(&learnfs_type);
+	pr_info("%s: Register learnfs 0.1\n", __func__);
 	return 0;
 }
 
 static void __exit learnfs_exit(void)
 {
-	pr_info("%s: Exiting\n", __func__);
+	unregister_filesystem(&learnfs_type);
+	pr_info("%s: Unregistered \n", __func__);
 }
 
 module_init(learnfs_init);
