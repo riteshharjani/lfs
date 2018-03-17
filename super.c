@@ -26,7 +26,7 @@ struct inode *learnfs_iget(struct super_block *sb, struct inode *dir,
 		 * As fill_super also calls this function
 		 * to allocate it's inode.
 		 */
-		inode->i_op = &simple_dir_inode_operations;
+		inode->i_op = &learnfs_dir_inode_operations;
 
 		/*
 		 * Without below operation

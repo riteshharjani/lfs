@@ -1,7 +1,7 @@
 # Makefile for learnfs filesystem module.
 
 obj-m += learnfs.o
-learnfs-objs += super.o
+learnfs-objs += super.o inode.o
 
 all: learnfs
 
