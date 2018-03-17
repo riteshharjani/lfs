@@ -16,6 +16,7 @@ struct inode *learnfs_iget(struct super_block *sb, struct inode *dir,
 
 	switch(mode & S_IFMT) {
 	case S_IFREG:
+		inode->i_op = &learnfs_file_inode_operations;
 		break;
 	case S_IFDIR:
 

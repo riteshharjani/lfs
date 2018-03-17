@@ -29,13 +29,22 @@ static int learnfs_mkdir(struct inode *dir, struct dentry *dentry, umode_t mode)
 	return ret;
 }
 
+static int learnfs_create(struct inode *dir, struct dentry *dentry, umode_t mode,
+			  bool excl)
+{
+	return learnfs_mknod(dir, dentry, mode | S_IFREG, 0);
+}
+
 struct inode_operations learnfs_dir_inode_operations = {
 	.lookup = simple_lookup,
+	.create = learnfs_create,
+	.unlink = simple_unlink,
 	.mkdir = learnfs_mkdir,
 	.rmdir = simple_rmdir,
 	.mknod = learnfs_mknod,
 };
 
 struct inode_operations learnfs_file_inode_operations = {
+	.setattr = simple_setattr,
 	.getattr = simple_getattr,
 };
