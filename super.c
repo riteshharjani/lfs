@@ -11,12 +11,15 @@ struct inode *learnfs_iget(struct super_block *sb, struct inode *dir,
 	if (!inode)
 		goto out;
 
+//	inode->i_ino = get_next_ino(); // do we need this ?
+	inode->i_mapping->a_ops = &learnfs_aops;
 	inode->i_atime = inode->i_ctime = inode->i_mtime = current_time(inode);
 	inode_init_owner(inode, dir, mode);
 
 	switch(mode & S_IFMT) {
 	case S_IFREG:
 		inode->i_op = &learnfs_file_inode_operations;
+		inode->i_fop = &learnfs_file_operations;
 		break;
 	case S_IFDIR:
 
